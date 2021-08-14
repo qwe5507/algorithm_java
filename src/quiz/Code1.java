@@ -1,4 +1,4 @@
-package quiz1;
+package quiz;
 
 public class Code1 {
     private static boolean solve(String a, String b) {

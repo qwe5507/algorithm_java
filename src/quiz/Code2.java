@@ -1,4 +1,4 @@
-package quiz1;
+package quiz;
 
 public class Code2 {
     private static boolean checkPassword(String s) {
