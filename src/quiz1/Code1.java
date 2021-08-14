@@ -2,8 +2,14 @@ package quiz1;
 
 public class Code1 {
     private static boolean solve(String a, String b) {
-        // 구현 할 위치
-        return true;
+        String temp = a;
+        for(int i = 0; i <a.length(); i++){
+            temp = temp.substring(1) + temp.substring(0,1);
+            if(temp.equals(b)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
