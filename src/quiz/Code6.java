@@ -24,7 +24,7 @@ public class Code6 {
         }
 
     public static void main(String[] args) {
-          int[] A = {1,5,3,4};
+          int[] A = {1,5,3,4,6,7};
           int[] B = {2,3,6,4,7,8,9,1};
         System.out.println(solution(A,B));
     }
