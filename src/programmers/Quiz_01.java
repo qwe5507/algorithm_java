@@ -1,10 +1,5 @@
 package programmers;
 
-/*
-프로그래머스 - 완주하지 못한 선수
- */
-
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +8,10 @@ public class Quiz_01 {
 
     }
 
-    public String solution(String[] participant, String[] completion) {
+    /*
+    프로그래머스 - 완주하지 못한 선수
+     */
+    public String solution_01(String[] participant, String[] completion) {
         Map<String, Integer> temp = new HashMap<>();
 
         for (String name : participant) {
@@ -25,11 +23,30 @@ public class Quiz_01 {
         }
 
         String result = "";
-        for( String name : temp.keySet() ){
+        for (String name : temp.keySet()) {
             if (temp.get(name) > 0) {
                 result = name;
             }
         }
         return result;
+    }
+
+    /*
+    프로그래머스 - 두 정수 사이의 합
+    */
+    public long solution_02(int a, int b) {
+        long answer = 0;
+
+        if (a > b) {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        for (int i = a; i <= b; i++) {
+            answer += i;
+        }
+
+        return answer;
     }
 }
