@@ -1,0 +1,35 @@
+package programmers;
+
+/*
+프로그래머스 - 완주하지 못한 선수
+ */
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Quiz_01 {
+    public static void main(String[] args) {
+
+    }
+
+    public String solution(String[] participant, String[] completion) {
+        Map<String, Integer> temp = new HashMap<>();
+
+        for (String name : participant) {
+            temp.put(name, temp.getOrDefault(name, 0) + 1); // getOrDefault()가 있다니..!
+        }
+
+        for (String name : completion) {
+            temp.put(name, temp.get(name) - 1);
+        }
+
+        String result = "";
+        for( String name : temp.keySet() ){
+            if (temp.get(name) > 0) {
+                result = name;
+            }
+        }
+        return result;
+    }
+}
