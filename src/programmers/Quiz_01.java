@@ -1,5 +1,6 @@
 package programmers;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,5 +49,37 @@ public class Quiz_01 {
         }
 
         return answer;
+    }
+    /*
+    프로그래머스 - 탐욕법 - 체육복
+    */
+    public long solution_03(int n, int[] lost, int[] reserve) {
+        Integer u[] = new Integer[n + 2];
+        Arrays.fill(u, 1);
+
+        for (int i : reserve) {
+            u[i] += 1;
+        }
+        for (int i : lost) {
+            u[i] -= 1;
+        }
+
+        for (int i = 1; i < n + 1; i++) {
+            if (u[i - 1] == 0 && u[i] == 2) {
+                u[i - 1] += 1;
+                u[i] -= 1;
+            } else if (u[i + 1] == 0 && u[i] == 2) {
+                u[i + 1] += 1;
+                u[i] -= 1;
+            }
+        }
+        int result = 0;
+        for (int i = 1; i < n + 1; i++) {
+            if (u[i] > 0) {
+                result += 1;
+            }
+        }
+
+        return result;
     }
 }
