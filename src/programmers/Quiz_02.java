@@ -4,9 +4,10 @@ import java.util.*;
 
 public class Quiz_02 {
     public static void main(String[] args) {
-        int[] list = {3, 30, 34, 5, 9};
+//        int[] list = {3, 30, 34, 5, 9};
+//        System.out.println(solution(list));
 
-        System.out.println(solution(list));
+        System.out.println(solution2("1924", 2));
     }
 
     /*
@@ -40,5 +41,38 @@ public class Quiz_02 {
         }
         return answer.toString();
     }
+    /*
+    프로그래머스 2레벨 - 큰 수 만들기
+     */
+    public static String solution2(String number, int k) {
+        StringBuilder answer = new StringBuilder("");
+//        char[] result = new char[number.length() - k];
+        Stack<Character> stackChar = new Stack<>();
+        for (int i = 0; i < number.length(); i++) {
+            while (!stackChar.isEmpty() && stackChar.peek() < number.charAt(i) && k > 0) {
+                stackChar.pop();
+                k -= 1;
+            }
+            if (k == 0) {
+                for (int j = i; j < number.length(); j++) {
+                    stackChar.push(number.charAt(j));
+                }
+                break;
+            }
+            stackChar.push(number.charAt(i));
+        }
+        while (k > 0) {
+            stackChar.pop();
+            k -= 1;
+        }
+        Stack<Character> tempStack = new Stack<>();
+        while (!stackChar.isEmpty()) {
+            tempStack.push(stackChar.pop());
+        }
+        while (!tempStack.isEmpty()) {
+            answer.append(tempStack.pop());
+        }
 
+        return answer.toString();
+    }
 }
