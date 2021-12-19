@@ -1,12 +1,14 @@
 package programmers;
-import java.util.Collections;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Quiz_03 {
 
     public static void main(String[] args) {
-        int[] scoville = {1, 2, 3, 9, 10, 12};
-        System.out.println(solution(scoville, 7));
+//        int[] scoville = {1, 2, 3, 9, 10, 12};
+//        System.out.println(solution(scoville, 7));
+
+
+        System.out.println(solution3(5, 12));
     }
 
     /*
@@ -33,6 +35,44 @@ public class Quiz_03 {
             priorityQueue.add(new_min);
             answer += 1;
         }
+
+        return answer;
+    }
+    /*
+    프로그래머스 3 level - 동적 계획법 - N으로 표현
+     */
+    public static int solution3(int N, int number) {
+        int answer = 0;
+        List<Set<Integer>> list = new ArrayList<>();
+        for (int i = 1; i < 9; i++) {
+            Set<Integer> values = new HashSet<>();
+            values.add(Integer.valueOf(String.valueOf(N).repeat(i)));
+            list.add(values);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < i; j++) {
+                for (Integer op1 : list.get(j)) {
+                    for (Integer op2 : list.get(i - j - 1)) {
+                        Set<Integer> temp =  list.get(i);
+                        temp.add(op1 + op2);
+                        temp.add(op1 - op2);
+                        temp.add(op1 * op2);
+                        if (op2 != 0) {
+                            temp.add(op1 / op2);
+                        }
+                    }
+                }
+            }
+            if (list.get(i).contains(number)) {
+                answer = i + 1;
+                break;
+            }
+            if (i == 7) {
+                answer = -1;
+            }
+        }
+        System.out.println("list = " + list);
 
         return answer;
     }
