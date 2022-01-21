@@ -8,7 +8,7 @@ public class Quiz_03 {
 //        System.out.println(solution(scoville, 7));
 
 
-        System.out.println(solution3(5, 12));
+        System.out.println(solution3("  try hello world  "));
     }
 
     /*
@@ -41,7 +41,7 @@ public class Quiz_03 {
     /*
     프로그래머스 3 level - 동적 계획법 - N으로 표현
      */
-    public static int solution3(int N, int number) {
+    public static int solution2(int N, int number) {
         int answer = 0;
         List<Set<Integer>> list = new ArrayList<>();
         for (int i = 1; i < 9; i++) {
@@ -72,8 +72,27 @@ public class Quiz_03 {
                 answer = -1;
             }
         }
-        System.out.println("list = " + list);
 
         return answer;
+    }
+    /*
+    프로그래머스 1Level - 이상한 문자 만들기
+    */
+    public static String solution3(String s) {
+        List<String> result = new ArrayList<>();
+        String[] words = s.split(" ", -1);
+        for (String word : words) {
+            StringBuffer strTemp = new StringBuffer();
+            for (int i = 0; i < word.length(); i++) {
+                if (i % 2 == 0) {
+                    strTemp.append(Character.toUpperCase(word.charAt(i)));
+                } else {
+                    strTemp.append(Character.toLowerCase(word.charAt(i)));
+                }
+            }
+            result.add(strTemp.toString());
+        }
+
+        return String.join(" ", result);
     }
 }
