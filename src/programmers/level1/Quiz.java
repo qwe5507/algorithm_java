@@ -1,4 +1,4 @@
-package programmers;
+package programmers.level1;
 
 /*
 프로그래머스 - 같은 숫자는 싫어 [자바 풀이]
