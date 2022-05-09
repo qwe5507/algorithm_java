@@ -12,8 +12,6 @@ public class 소수만들기 {
     public static int solution(int[] nums) {
         int answer = 0;
 
-        Set<Integer> set = new HashSet<>();
-
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 for (int z = j + 1; z < nums.length; z++) {
